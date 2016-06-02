@@ -5,7 +5,7 @@
 
 0 说明
 
-    手册制作: 雪松 littlepy www.51reboot.com
+    手册制作: 雪松 littlepy www.51reboot.com 【个人修改版】
     更新日期: 2015-08-12
 
     欢迎系统运维加入Q群: 198173206  # 加群请回答问题
