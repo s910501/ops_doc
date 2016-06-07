@@ -1,4 +1,4 @@
-    shell实例手册
+shell实例手册
 
 0 说明{
 
@@ -27,8 +27,8 @@
     unix2dos                # linux文本转windows文本
     enca filename           # 查看编码  安装 yum install -y enca 
     md5sum                  # 查看md5值
-    ln 源文件 目标文件      # 硬链接
-    ln -s 源文件 目标文件   # 符号连接
+    ln 源文件 目标文件      # 硬链接(默认)
+    ln -s 源文件 目标文件   # 符号连接（类似于Windows操作系统中的快捷方式）
     readlink -f /data       # 查看连接真实目录
     cat file | nl |less     # 查看上下翻页且显示行号  q退出
     head                    # 查看文件开头内容
@@ -88,7 +88,7 @@
 
     find查找{
 
-        # linux文件无创建时间
+        # linux文件创建时间
         # Access 使用时间  
         # Modify 内容修改时间  
         # Change 状态改变时间(权限、属主)
@@ -119,7 +119,7 @@
         gconf-editor       # 配置编辑器
         /etc/vimrc         # 配置文件路径
         vim +24 file       # 打开文件定位到指定行
-        vim file1 file2    # 打开多个文件    
+        vim file1 file2    # 打开多个文件    【:bn—下一个文件  :bp—上一个文件】
         vim -O2 file1 file2    # 垂直分屏
         vim -on file1 file2    # 水平分屏
         sp filename        # 上下分割打开新文件
@@ -140,7 +140,6 @@
         ctrl+ D            # 向后翻页
         %s/字符1/字符2/g   # 全部替换    
         X                  # 文档加密
-    
     }
 
     归档解压缩{
@@ -341,7 +340,7 @@
     reset                       # 重新初始化屏幕
     cal                         # 显示月历
     echo -n 123456 | md5sum     # md5加密
-    mkpasswd                    # 随机生成密码   -l位数 -C大小 -c小写 -d数字 -s特殊字符
+    mkpasswd                    # 随机生成密码   -l位数 -C大小 -c小写 -d数字 -s特殊字符【expect包】
     netstat -anlp | grep port   # 是否打开了某个端口
     ntpdate stdtime.gov.hk      # 同步时间
     tzselect                    # 选择时区 #+8=(5 9 1 1) # (TZ='Asia/Shanghai'; export TZ)括号内写入 /etc/profile
@@ -358,7 +357,11 @@
     ldd `which cmd`             # 查看命令的依赖库
     dist-upgrade                # 会改变配置文件,改变旧的依赖关系，改变系统版本 
     /boot/grub/grub.conf        # grub启动项配置
+	top -b -n 1                 # 查看所有的进程 
+	htop                        # F2 设置树和显示线程
     ps -mfL <PID>               # 查看指定进程启动的线程 线程数受 max user processes 限制
+	                            # -L              Show threads, possibly with LWP and NLWP column
+								# -m              Show threads after processes
     ps uxm |wc -l               # 查看当前用户占用的进程数 [包括线程]  max user processes
     top -p  PID -H              # 查看指定PID进程及线程
     lsof |wc -l                 # 查看当前文件句柄数使用数量  open files 
